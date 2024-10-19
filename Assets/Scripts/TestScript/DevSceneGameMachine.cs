@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class StateCommandSceneGameMachine : MonoBehaviour
+public class DevSceneGameMachine : MonoBehaviour
 {
-    [FormerlySerializedAs("commandInvoker")] [SerializeField] private StateCommandInvoker stateCommandInvoker;
+    [SerializeField] private List<SquadUnit> squadUnits;
+    [FormerlySerializedAs("stateCommandInvoker")] [FormerlySerializedAs("commandInvoker")] [SerializeField] private SquadManager squadManager;
     [SerializeField] private List<NavigationTarget> targets;
 
     private int _currentTargetIndex = 0;
@@ -17,6 +18,7 @@ public class StateCommandSceneGameMachine : MonoBehaviour
 
     public void StartTest()
     {
+        squadManager.SquadUnits = squadUnits;
         StartCoroutine(TestCor());
     }
 
@@ -37,7 +39,7 @@ public class StateCommandSceneGameMachine : MonoBehaviour
         }
 
         var interactCommand = new InteractStateCommand(targets[_currentTargetIndex].GetComponent<Interactable>(), interactable => Destroy(interactable.gameObject));
-        stateCommandInvoker.InvokeCommand(interactCommand);
+        squadManager.InvokeCommand(interactCommand);
         
         _currentTargetIndex++;
     }
