@@ -20,14 +20,15 @@ public class NavigateStateCommand : StateCommand
 
     public override void Invoke(StateCommandTarget stateCommandTarget)
     {
-        base.Invoke(stateCommandTarget);
         Navigatable navigatable = GetRequiredStateCommandTargetComponent<Navigatable>(stateCommandTarget);
         navigatable.SetTarget(_targetPos);
+        base.Invoke(stateCommandTarget);
     }
 
     public override void Cancel(StateCommandTarget stateCommandTarget)
     {
         Navigatable navigatable = GetRequiredStateCommandTargetComponent<Navigatable>(stateCommandTarget);
         navigatable.Stop();
+        base.Cancel(stateCommandTarget);
     }
 }

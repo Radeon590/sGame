@@ -18,6 +18,7 @@ public class InteractStateCommand : NavigateStateCommand
     {
         var targetInteractor = GetRequiredStateCommandTargetComponent<Interactor>(stateCommandTarget);
         targetInteractor.OnInteract += _onInteract;
+        targetInteractor.OnInteract += GetOnInteractAction(stateCommandTarget);
         targetInteractor.SetInteraction(_interactable);
         base.Invoke(stateCommandTarget);
     }
@@ -25,8 +26,22 @@ public class InteractStateCommand : NavigateStateCommand
     public override void Cancel(StateCommandTarget stateCommandTarget)
     {
         var targetInteractor = GetRequiredStateCommandTargetComponent<Interactor>(stateCommandTarget);
-        targetInteractor.OnInteract -= _onInteract;
+        targetInteractor.OnInteract = null;
         targetInteractor.CancelInteraction();
         base.Cancel(stateCommandTarget);
+    }
+
+    protected override void Done(StateCommandTarget stateCommandTarget)
+    {
+        Cancel(stateCommandTarget);
+        base.Done(stateCommandTarget);
+    }
+
+    private Action<Interactable> GetOnInteractAction(StateCommandTarget stateCommandTarget)
+    {
+        return _ =>
+        {
+            Done(stateCommandTarget);
+        };
     }
 }

@@ -5,14 +5,19 @@ using UnityEngine;
 
 public abstract class StateCommand
 {
+    public Action<StateCommand, StateCommandTarget> OnDone;
+    
     public virtual void Invoke(StateCommandTarget stateCommandTarget)
     {
-        
     }
 
     public virtual void Cancel(StateCommandTarget stateCommandTarget)
     {
-        
+    }
+
+    protected virtual void Done(StateCommandTarget stateCommandTarget)
+    {
+        OnDone?.Invoke(this, stateCommandTarget);
     }
 
     protected T GetRequiredStateCommandTargetComponent<T>(StateCommandTarget stateCommandTarget)
