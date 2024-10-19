@@ -18,7 +18,7 @@ public class DevSceneGameMachine : MonoBehaviour
 
     public void StartTest()
     {
-        squadManager.SquadUnits = squadUnits;
+        squadManager.SetSquadUnits(squadUnits);
         StartCoroutine(TestCor());
     }
 
