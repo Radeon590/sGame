@@ -36,8 +36,8 @@ public class StateCommandSceneGameMachine : MonoBehaviour
             _currentTargetIndex = 0;
         }
 
-        var navigateCommand = new NavigateStateCommand(targets[_currentTargetIndex]);
-        stateCommandInvoker.InvokeCommand(navigateCommand);
+        var interactCommand = new InteractStateCommand(targets[_currentTargetIndex].GetComponent<Interactable>(), interactable => Destroy(interactable.gameObject));
+        stateCommandInvoker.InvokeCommand(interactCommand);
         
         _currentTargetIndex++;
     }

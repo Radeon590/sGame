@@ -10,15 +10,6 @@ public class Interactable : MonoBehaviour
 
     public virtual void Interact(Interactor interactor)
     {
-        interactor.Interact(this);
         OnInteract?.Invoke(interactor);
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.TryGetComponent(out Interactor interactor))
-        {
-            Interact(interactor);
-        }
     }
 }
