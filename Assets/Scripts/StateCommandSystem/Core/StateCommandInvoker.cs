@@ -16,22 +16,23 @@ public class StateCommandInvoker : MonoBehaviour
     {
         foreach (var commandTarget in ControlledCommandTargets)
         {
-            _currentStateCommand.Invoke(commandTarget);
+            commandTarget.InvokeStateCommand();
         }
     }
 
     public void CancelCurrentCommand()
     {
-        _currentStateCommand.Cancel();
+        foreach (var commandTarget in ControlledCommandTargets)
+        {
+            commandTarget.CancelStateCommand();
+        }
     }
     
     public void InvokeCommand(StateCommand stateCommand)
     {
-        if (_currentStateCommand != null)
+        foreach (var commandTarget in ControlledCommandTargets)
         {
-            CancelCurrentCommand();
+            commandTarget.InvokeStateCommand(stateCommand);
         }
-        SetCommand(stateCommand);
-        InvokeCurrentCommand();
     }
 }

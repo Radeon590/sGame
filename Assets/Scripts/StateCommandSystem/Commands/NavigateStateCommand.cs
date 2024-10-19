@@ -6,7 +6,6 @@ using UnityEngine;
 public class NavigateStateCommand : StateCommand
 {
     private Vector2 _targetPos;
-    private Navigatable _navigatable;
     
     public NavigateStateCommand(NavigationTarget navigationTarget) 
         : this(navigationTarget.transform.position)
@@ -22,19 +21,13 @@ public class NavigateStateCommand : StateCommand
     public override void Invoke(StateCommandTarget stateCommandTarget)
     {
         base.Invoke(stateCommandTarget);
-        if (StateCommandTarget.TryGetComponent(out Navigatable navigatable))
-        {
-            _navigatable = navigatable;
-        }
-        else
-        {
-            throw new Exception("cant get Navigatable from CommandTarget object when execute NavigateToCommand");
-        }
-        _navigatable.SetTarget(_targetPos);
+        Navigatable navigatable = GetRequiredStateCommandTargetComponent<Navigatable>(stateCommandTarget);
+        navigatable.SetTarget(_targetPos);
     }
 
-    public override void Cancel()
+    public override void Cancel(StateCommandTarget stateCommandTarget)
     {
-        _navigatable.Stop();
+        Navigatable navigatable = GetRequiredStateCommandTargetComponent<Navigatable>(stateCommandTarget);
+        navigatable.Stop();
     }
 }
