@@ -8,6 +8,9 @@ using UnityEngine.Serialization;
 public class Navigatable : MonoBehaviour
 {
     [FormerlySerializedAs("navMeshAgent")] public NavMeshAgent NavMeshAgent;
+
+    private NavigationTarget _target;
+    private Vector2 _targetPosition;
     
     void Start()
     {
@@ -20,9 +23,22 @@ public class Navigatable : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        if (_target is null)
+        {
+            return;
+        }
+        if (!_target.transform.position.Equals(_targetPosition))
+        {
+            SetUpTarget();
+        }
+    }
+
     public void SetTarget(NavigationTarget target)
     {
-        SetTarget(target.transform.position);
+        _target = target;
+        SetUpTarget();
     }
     
     public void SetTarget(Vector3 targetPosition)
@@ -33,6 +49,13 @@ public class Navigatable : MonoBehaviour
 
     public void Stop()
     {
+        _target = null;
         NavMeshAgent.isStopped = true;
+    }
+
+    private void SetUpTarget()
+    {
+        _targetPosition = _target.transform.position;
+        SetTarget(_targetPosition);
     }
 }

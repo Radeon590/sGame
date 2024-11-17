@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class NavigateStateCommand : StateCommand
 {
+    private NavigationTarget _target;
     private Vector2 _targetPos;
     public float Offset = 0;
     
-    public NavigateStateCommand(NavigationTarget navigationTarget) 
-        : this(navigationTarget.transform.position)
+    public NavigateStateCommand(NavigationTarget navigationTarget)
     {
-        
+        _target = navigationTarget;
     }
     
     public NavigateStateCommand(Vector3 navigationTarget)
@@ -23,7 +23,14 @@ public class NavigateStateCommand : StateCommand
     {
         Navigatable navigatable = GetRequiredStateCommandTargetComponent<Navigatable>(stateCommandTarget);
         navigatable.NavMeshAgent.stoppingDistance = Offset;
-        navigatable.SetTarget(_targetPos);
+        if (_target != null)
+        {
+            navigatable.SetTarget(_target);
+        }
+        else
+        {
+            navigatable.SetTarget(_targetPos);
+        }
         base.Invoke(stateCommandTarget);
     }
 
