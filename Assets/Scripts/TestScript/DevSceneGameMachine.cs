@@ -39,6 +39,7 @@ public class DevSceneGameMachine : MonoBehaviour
         }
 
         var interactCommand = new InteractStateCommand(targets[_currentTargetIndex].GetComponent<Interactable>(), interactable => Destroy(interactable.gameObject));
+        //interactCommand.Offset = 5;
         squadManager.InvokeCommand(interactCommand);
         
         _currentTargetIndex++;

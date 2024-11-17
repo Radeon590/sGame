@@ -6,6 +6,7 @@ using UnityEngine;
 public class NavigateStateCommand : StateCommand
 {
     private Vector2 _targetPos;
+    public float Offset = 0;
     
     public NavigateStateCommand(NavigationTarget navigationTarget) 
         : this(navigationTarget.transform.position)
@@ -21,6 +22,7 @@ public class NavigateStateCommand : StateCommand
     public override void Invoke(StateCommandTarget stateCommandTarget)
     {
         Navigatable navigatable = GetRequiredStateCommandTargetComponent<Navigatable>(stateCommandTarget);
+        navigatable.NavMeshAgent.stoppingDistance = Offset;
         navigatable.SetTarget(_targetPos);
         base.Invoke(stateCommandTarget);
     }
