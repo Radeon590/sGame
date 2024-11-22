@@ -6,6 +6,7 @@ using UnityEngine;
 public interface IWeapon
 {
     public float Range { get; }
+    public float Rate { get; }
     public float Damage { get; }
     public void UseEffect(Fighter fighter, FightTarget target);
     

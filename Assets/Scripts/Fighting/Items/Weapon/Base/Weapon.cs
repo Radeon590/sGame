@@ -8,8 +8,10 @@ namespace Fighting.Items.Weapon.Base
         [SerializeField] protected float damage;
         [SerializeField] protected float rate;
         [SerializeField] protected float range;
-        public float Range => range;
         public float Damage => damage;
+        public float Rate => rate;
+        public float Range => range;
+        
         public virtual void UseEffect(Fighter fighter, FightTarget target)
         {
             target.Attack(this);
