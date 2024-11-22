@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Fighting.Core;
+using Fighting.Hp;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -10,7 +11,7 @@ public class FightTarget : MonoBehaviour
 {
     private IArmor _armor;
     public NavigationTarget NavigationTarget;
-    [SerializeField] private IHpHandler hpHandler;
+    private IHpHandler hpHandler;
 
     // TODO: Initializable
     private void Start()
@@ -21,6 +22,10 @@ public class FightTarget : MonoBehaviour
     private void SetUp()
     {
         NavigationTarget = GetComponent<NavigationTarget>();
+        if (!TryGetComponent(out hpHandler))
+        {
+            Debug.LogError($"No component of IHpHandler on {name}");
+        }
     }
 
     public void Attack(IWeapon weapon)

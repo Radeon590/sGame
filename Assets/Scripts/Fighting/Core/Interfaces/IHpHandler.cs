@@ -1,4 +1,6 @@
-﻿namespace Fighting.Core
+﻿using UnityEngine;
+
+namespace Fighting.Core
 {
     public interface IHpHandler
     {
