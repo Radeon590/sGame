@@ -5,6 +5,7 @@ namespace Fighting.Items.Weapon.Range
 {
     public class RangeWeaponBullet : MonoBehaviour
     {
+        [SerializeField] protected float speed = 3;
         public Action<RangeWeaponBullet> OnHit;
         private FightTarget _target;
         public FightTarget Target => _target;
@@ -20,7 +21,7 @@ namespace Fighting.Items.Weapon.Range
             {
                 return;
             }
-            Vector2.MoveTowards(transform.position, Target.transform.position, Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, Target.transform.position, speed * Time.deltaTime);
         }
 
         private void OnCollisionEnter2D(Collision2D other)
