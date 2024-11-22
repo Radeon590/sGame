@@ -34,6 +34,21 @@ public class FightingDevSceneGameMachine : MonoBehaviour
             squadUnit.GetComponent<Fighter>().Weapon = weapons[index];
             isSecondWeapon = !isSecondWeapon;
         }
+
+        foreach (var target in targets)
+        {
+            int index;
+            if (!isSecondWeapon)
+            {
+                index = 0;
+            }
+            else
+            {
+                index = 1;
+            }
+            target.GetComponent<Fighter>().Weapon = weapons[index];
+            isSecondWeapon = !isSecondWeapon;
+        }
         squadManager.SetSquadUnits(squadUnits);
         StartCoroutine(TestCor());
     }
