@@ -12,17 +12,21 @@ public class Fighter : MonoBehaviour
         get => _weapon;
     }
     public FightTarget Target;
+    private bool _isFighting;
+    public bool IsFighting => _isFighting;
 
     private bool _isCooldownPassed = true;
 
     public void SetTarget(FightTarget target)
     {
         Target = target;
+        _isFighting = true;
     }
 
     public void CancelFight()
     {
         Target = null;
+        _isFighting = false;
     }
 
     private void FixedUpdate()
