@@ -9,16 +9,7 @@ public class Fighter : MonoBehaviour
 
     public IWeapon Weapon
     {
-        set
-        {
-            if (_weapon != null)
-            {
-                _weapon.OnEffect -= OnWeaponEffect;
-            }
-
-            _weapon = value;
-            _weapon.OnEffect += OnWeaponEffect;
-        }
+        set => _weapon = value;
         get => _weapon;
     }
     public FightTarget Target;
@@ -47,16 +38,5 @@ public class Fighter : MonoBehaviour
     private void Attack()
     {
         Weapon.UseEffect(this, Target);
-    }
-
-    public void OnWeaponEffect(Fighter fighter, FightTarget target)
-    {
-        if (fighter != this)
-        {
-            Debug.Log("trying to invoke onWeaponEffect from weapon in hands of another fighter");
-            return;
-        }
-        
-        target.Attack(_weapon);
     }
 }

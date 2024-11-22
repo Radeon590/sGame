@@ -5,10 +5,10 @@ using Fighting.Core;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-[RequireComponent(typeof(NavigationTarget), typeof(IHpHandler))]
+[RequireComponent(typeof(NavigationTarget))]
 public class FightTarget : MonoBehaviour
 {
-    public IArmor Armor;
+    private IArmor _armor;
     public NavigationTarget NavigationTarget;
     [SerializeField] private IHpHandler hpHandler;
 
@@ -25,7 +25,11 @@ public class FightTarget : MonoBehaviour
 
     public void Attack(IWeapon weapon)
     {
-        float damage = weapon.Damage - Armor.Armor;
+        float damage = weapon.Damage;
+        if (_armor != null)
+        {
+            damage -= _armor.Protection;
+        }
         hpHandler.HandleDamage(damage);
     }
 }

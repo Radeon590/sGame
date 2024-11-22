@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IArmor
 {
-    public float Armor { get; }
+    public float Protection { get; }
 }
