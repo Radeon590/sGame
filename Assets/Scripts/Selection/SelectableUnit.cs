@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class SelectableUnit : MonoBehaviour
 {
-    private GameObject selectedGameObject;
+    [SerializeField] private GameObject selectedGameObject;
 
     private void Awake()
     {
-        selectedGameObject = transform.Find("Selected").gameObject;
+        if (selectedGameObject == null)
+        {
+            selectedGameObject = transform.Find("SelectedPointer").gameObject;
+        }
         SetSelectedVisible(false);
     }
 
