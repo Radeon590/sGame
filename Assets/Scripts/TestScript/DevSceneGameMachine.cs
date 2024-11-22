@@ -14,6 +14,10 @@ public class DevSceneGameMachine : MonoBehaviour
     private void Awake()
     {
         StartTest();
+        SelectionController.OnUnitsSelected += list =>
+        {
+            Debug.Log($"selected units: {list.Count}");
+        };
     }
 
     public void StartTest()

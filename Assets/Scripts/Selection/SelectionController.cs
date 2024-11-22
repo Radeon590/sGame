@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,8 @@ public class SelectionController : MonoBehaviour
     [SerializeField] private GetMousePosition mousePositionGetter;
     [SerializeField] private GameObject selectionAreaPrefab;
     private Transform selectionAreaTransform;
+    
+    public static Action<List<SelectableUnit>> OnUnitsSelected;
 
     private void Awake()
     {
@@ -63,7 +66,7 @@ public class SelectionController : MonoBehaviour
                 }
             }
 
-            Debug.Log($"selected units: {selectedUnitList.Count}");
+            OnUnitsSelected?.Invoke(selectedUnitList);
         }
     }
 }
