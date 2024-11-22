@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitSelect : MonoBehaviour
+public class SelectableUnit : MonoBehaviour
 {
     private GameObject selectedGameObject;
 
@@ -12,9 +12,8 @@ public class UnitSelect : MonoBehaviour
         SetSelectedVisible(false);
     }
 
-    public void SetSelectedVisible (bool visible)
+    public void SetSelectedVisible(bool visible)
     {
         selectedGameObject.SetActive(visible);
-
     }
 }

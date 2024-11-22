@@ -2,16 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RTSController : MonoBehaviour
+public class SelectionController : MonoBehaviour
 {
     private Vector3 startPosition;
-    private List<UnitSelect> selectedUnitList;
+    private List<SelectableUnit> selectedUnitList;
     [SerializeField] private GetMousePosition mousePositionGetter;
-    [SerializeField] private Transform selectionAreaTransform;
+    [SerializeField] private GameObject selectionAreaPrefab;
+    private Transform selectionAreaTransform;
 
     private void Awake()
     {
-        selectedUnitList = new List<UnitSelect>();
+        selectionAreaTransform = Instantiate(selectionAreaPrefab).GetComponent<Transform>();
+        selectedUnitList = new List<SelectableUnit>();
         selectionAreaTransform.gameObject.SetActive(false);
     }
     void Update()
@@ -45,7 +47,7 @@ public class RTSController : MonoBehaviour
 
             Collider2D[] collider2DArray = Physics2D.OverlapAreaAll(startPosition, mousePositionGetter.mouseWorldPosition);
 
-            foreach  (UnitSelect unitSelect in selectedUnitList)
+            foreach  (SelectableUnit unitSelect in selectedUnitList)
             {
                 unitSelect.SetSelectedVisible(false);
             }
@@ -53,14 +55,15 @@ public class RTSController : MonoBehaviour
             selectedUnitList.Clear();
             foreach (Collider2D collider2D in collider2DArray)
             {
-                UnitSelect unitSelect = collider2D.GetComponent<UnitSelect>();
-                if (unitSelect != null)
+                SelectableUnit selectableUnit = collider2D.GetComponent<SelectableUnit>();
+                if (selectableUnit != null)
                 {
-                    unitSelect.SetSelectedVisible(true );
-                    selectedUnitList.Add(unitSelect);
+                    selectableUnit.SetSelectedVisible(true );
+                    selectedUnitList.Add(selectableUnit);
                 }
             }
-            Debug.Log(selectedUnitList.Count);
+
+            Debug.Log($"selected units: {selectedUnitList.Count}");
         }
     }
 }
