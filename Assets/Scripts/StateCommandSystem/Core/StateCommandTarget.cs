@@ -6,6 +6,7 @@ using UnityEngine;
 public class StateCommandTarget : MonoBehaviour
 {
     private StateCommand _currentStateCommand;
+    public StateCommand CurrentStateCommand => _currentStateCommand;
     private Action<StateCommand, StateCommandTarget> _currentOnDone;
 
     public Action<StateCommand, StateCommandTarget> OnDone;
