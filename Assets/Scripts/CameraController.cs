@@ -22,9 +22,9 @@ public class CameraController : MonoBehaviour
         // Перемещение камеры при зажатии колёсика
         if (Input.GetMouseButton(2))
         {
-            Vector3 delta = Input.mousePosition - lastMousePosition; // Разница позиций мыши
-            Vector3 move = new Vector3(-delta.x, -delta.y, 0) * Time.deltaTime; // Инвертируем направление для правильного перемещения
-            transform.position += move * moveSpeed * Camera.main.orthographicSize / 10f; // Скорость адаптируется к зуму
+            Vector3 delta = Input.mousePosition - lastMousePosition; 
+            Vector3 move = new Vector3(-delta.x, -delta.y, 0) * Time.deltaTime; 
+            transform.position += move * moveSpeed * Camera.main.orthographicSize / 10f; 
         }
         lastMousePosition = Input.mousePosition;
 
