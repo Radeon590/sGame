@@ -1,9 +1,10 @@
 ﻿using System;
+using Inventory;
 using UnityEngine;
 
 namespace Fighting.Items.Weapon.Base
 {
-    public abstract class Weapon : ScriptableObject, IWeapon
+    public abstract class Weapon : InventoryItem, IWeapon
     {
         [SerializeField] protected float damage;
         [SerializeField] protected float rate;

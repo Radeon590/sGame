@@ -9,7 +9,7 @@ using UnityEngine.Serialization;
 [RequireComponent(typeof(NavigationTarget))]
 public class FightTarget : MonoBehaviour
 {
-    private IArmor _armor;
+    public IArmor Armor;
     public NavigationTarget NavigationTarget;
     private IHpHandler hpHandler;
 
@@ -33,9 +33,9 @@ public class FightTarget : MonoBehaviour
     public void Attack(Fighter source, IWeapon weapon)
     {
         float damage = weapon.Damage;
-        if (_armor != null)
+        if (Armor != null)
         {
-            damage -= _armor.Protection;
+            damage -= Armor.Protection;
         }
 
         if (hpHandler.HandleDamage(damage))
