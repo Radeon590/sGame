@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Fighting.Hp;
 using UnityEngine;
 
 public class SelectionController : MonoBehaviour
@@ -53,6 +54,11 @@ public class SelectionController : MonoBehaviour
             foreach  (SelectableUnit unitSelect in selectedUnitList)
             {
                 unitSelect.SetSelectedVisible(false);
+                if (unitSelect.TryGetComponent(out HpHandler hpHandler))
+                {
+                    hpHandler.OnDead -= unitSelect.OnDeadHandler;
+                    unitSelect.OnDeadHandler = null;
+                }
             }
 
             selectedUnitList.Clear();
@@ -63,6 +69,11 @@ public class SelectionController : MonoBehaviour
                 {
                     selectableUnit.SetSelectedVisible(true );
                     selectedUnitList.Add(selectableUnit);
+                    if (selectableUnit.TryGetComponent(out HpHandler hpHandler))
+                    {
+                        selectableUnit.OnDeadHandler = () => selectedUnitList.Remove(selectableUnit);
+                        hpHandler.OnDead += selectableUnit.OnDeadHandler;
+                    }
                 }
             }
 

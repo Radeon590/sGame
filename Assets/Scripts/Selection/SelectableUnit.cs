@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SelectableUnit : MonoBehaviour
 {
+    public Action OnDeadHandler;
     [SerializeField] private GameObject selectedGameObject;
 
     private void Awake()
