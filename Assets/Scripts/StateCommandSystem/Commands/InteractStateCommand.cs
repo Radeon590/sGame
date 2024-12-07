@@ -30,13 +30,7 @@ public class InteractStateCommand : NavigateStateCommand
         targetInteractor.CancelInteraction();
         base.Cancel(stateCommandTarget);
     }
-
-    protected override void Done(StateCommandTarget stateCommandTarget)
-    {
-        Cancel(stateCommandTarget);
-        base.Done(stateCommandTarget);
-    }
-
+    
     private Action<Interactable> GetOnInteractAction(StateCommandTarget stateCommandTarget)
     {
         return _ =>

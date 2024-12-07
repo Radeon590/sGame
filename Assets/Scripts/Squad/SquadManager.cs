@@ -27,8 +27,16 @@ public class SquadManager : MonoBehaviour
         SquadUnits = squadUnits;
         foreach (var squadUnit in squadUnits)
         {
+            squadUnit.SquadManager = this;
             squadUnit.OnDone += _currentOnDone;
         }
+    }
+
+    public void RemoveSquadUnit(SquadUnit squadUnit)
+    {
+        squadUnit.SquadManager = null;
+        squadUnit.OnDone -= _currentOnDone;
+        SquadUnits.Remove(squadUnit);
     }
     
     public void SetCommand(StateCommand stateCommand)
@@ -67,7 +75,6 @@ public class SquadManager : MonoBehaviour
     {
         return (command, invoker) =>
         {
-            Debug.Log("OnDone unit action");
             var invokerSquadUnit = invoker as SquadUnit;
             if (invokerSquadUnit == null)
             {

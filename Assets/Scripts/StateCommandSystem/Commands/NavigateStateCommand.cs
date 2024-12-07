@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Fighting.Hp;
 using UnityEngine;
 
 public class NavigateStateCommand : StateCommand

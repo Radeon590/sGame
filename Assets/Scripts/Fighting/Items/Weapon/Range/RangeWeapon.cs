@@ -11,12 +11,12 @@ namespace Fighting.Items.Weapon.Range
         {
             var bullet = Instantiate(bulletPrefab, fighter.transform.position, Quaternion.identity).GetComponent<RangeWeaponBullet>();
             bullet.OnHit += OnBulletHit;
-            bullet.SetTarget(target);
+            bullet.SetTarget(fighter, target);
         }
 
         private void OnBulletHit(RangeWeaponBullet bullet)
         {
-            bullet.Target.Attack(this);
+            bullet.Target.Attack(bullet.Fighter, this);
             Destroy(bullet.gameObject);
         }
     }

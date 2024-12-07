@@ -5,6 +5,12 @@ namespace Fighting.Core
     public interface IHpHandler
     {
         public float Hp { get; }
-        public void HandleDamage(float damage);
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="damage"></param>
+        /// <returns>true if dead</returns>
+        public bool HandleDamage(float damage);
     }
 }

@@ -7,8 +7,15 @@ public class StateCommandTarget : MonoBehaviour
 {
     private StateCommand _currentStateCommand;
     public StateCommand CurrentStateCommand => _currentStateCommand;
+    
+    /// <summary>
+    /// actual invoking from stateCommand onDone Action
+    /// </summary>
     private Action<StateCommand, StateCommandTarget> _currentOnDone;
 
+    /// <summary>
+    /// OnDone preset
+    /// </summary>
     public Action<StateCommand, StateCommandTarget> OnDone;
 
     public void SetStateCommand(StateCommand stateCommand)
@@ -40,5 +47,15 @@ public class StateCommandTarget : MonoBehaviour
         }
         SetStateCommand(stateCommand);
         InvokeStateCommand();
+    }
+
+    private void OnDestroy()
+    {
+        if (_currentStateCommand != null 
+            && _currentOnDone != null 
+            && _currentStateCommand.OnDone != null)
+        {
+            _currentStateCommand.OnDone -= _currentOnDone;
+        }
     }
 }

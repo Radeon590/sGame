@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Fighting.Hp;
 using UnityEngine;
 
 namespace Fighting.Items.Weapon.Range
@@ -9,12 +10,16 @@ namespace Fighting.Items.Weapon.Range
         [SerializeField] protected float speed = 3;
         [SerializeField] protected float lifetime = 5;
         public Action<RangeWeaponBullet> OnHit;
+        private Fighter _fighter;
+        public Fighter Fighter => _fighter;
         private FightTarget _target;
         public FightTarget Target => _target;
         
-        public void SetTarget(FightTarget target)
+        public void SetTarget(Fighter fighter, FightTarget target)
         {
+            _fighter = fighter;
             _target = target;
+            _target.OnDead += OnTargetDead;
             StartCoroutine(LifeTimeTimer());
         }
 
@@ -43,6 +48,23 @@ namespace Fighting.Items.Weapon.Range
         {
             yield return new WaitForSeconds(lifetime);
             Destroy(gameObject);
+        }
+
+        private void OnTargetDead(Fighter fighter, IWeapon weapon)
+        {
+            Destroy(gameObject);
+        }
+
+        private void OnDestroy()
+        {
+            try
+            {
+                _target.OnDead -= OnTargetDead;
+            }
+            catch (InvalidOperationException)
+            {
+                // значит, таргет уже мёртв
+            }
         }
     }
 }

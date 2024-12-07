@@ -20,7 +20,6 @@ GameObject:
   - component: {fileID: 5483974387294445389}
   - component: {fileID: 8593241983823232457}
   - component: {fileID: 3271468567804082145}
-  - component: {fileID: 2904180130450859844}
   - component: {fileID: 8962533366517419939}
   - component: {fileID: 2922189440111505858}
   - component: {fileID: 3394034028262799460}
@@ -244,6 +243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb623f626eae68145b22c3af80f20501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SquadManager: {fileID: 0}
 --- !u!114 &8593241983823232457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,19 +269,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19a828f1ab089cf4a98f6487b9b05442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2904180130450859844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1221546457153756793}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9db34447f37e46d4eba0301e61b6c964, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NavigationTarget: {fileID: 3271468567804082145}
 --- !u!114 &8962533366517419939
 MonoBehaviour:
   m_ObjectHideFlags: 0

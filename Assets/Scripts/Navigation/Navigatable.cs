@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Serialization;
@@ -25,18 +26,25 @@ public class Navigatable : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_target is null)
+        try
         {
-            return;
+            if (_target is not null)
+            {
+                if (!_target.transform.position.Equals(_targetPosition))
+                {
+                    SetUpTarget();
+                }
+            }
         }
-        if (!_target.transform.position.Equals(_targetPosition))
+        catch (MissingReferenceException)
         {
-            SetUpTarget();
+            
         }
     }
 
     public void SetTarget(NavigationTarget target)
     {
+        //Debug.Log($"SetTarget {gameObject.name} {target.gameObject.name}");
         _target = target;
         SetUpTarget();
     }
@@ -53,7 +61,7 @@ public class Navigatable : MonoBehaviour
         NavMeshAgent.isStopped = true;
     }
 
-    private void SetUpTarget()
+    private void SetUpTarget()  
     {
         _targetPosition = _target.transform.position;
         SetTarget(_targetPosition);

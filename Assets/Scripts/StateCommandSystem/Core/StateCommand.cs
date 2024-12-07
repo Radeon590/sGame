@@ -17,6 +17,7 @@ public abstract class StateCommand
 
     protected virtual void Done(StateCommandTarget stateCommandTarget)
     {
+        Cancel(stateCommandTarget);
         OnDone?.Invoke(this, stateCommandTarget);
     }
 

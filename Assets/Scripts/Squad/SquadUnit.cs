@@ -5,4 +5,10 @@ using UnityEngine;
 
 public class SquadUnit : StateCommandTarget
 {
+    public SquadManager SquadManager;
+    
+    private void OnDestroy()
+    {
+        SquadManager.RemoveSquadUnit(this);
+    }
 }

@@ -1,3 +1,4 @@
+using System;
 using Fighting.Core;
 using UnityEngine;
 
@@ -7,13 +8,19 @@ namespace Fighting.Hp
     {
         [SerializeField] protected float hp;
         public float Hp => hp;
-        public void HandleDamage(float damage)
+        public Action OnDead;
+        public bool IsDead => hp <= 0;
+        public bool HandleDamage(float damage)
         {
             hp -= damage;
             if (hp <= 0)
             {
-                Debug.Log($"{name} destroyed");
+                Destroy(gameObject);
+                OnDead?.Invoke();
+                return true;
             }
+
+            return false;
         }
     }
 }

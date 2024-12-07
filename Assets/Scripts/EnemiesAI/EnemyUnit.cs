@@ -1,4 +1,5 @@
 ﻿using System;
+using Fighting.Hp;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -21,6 +22,19 @@ namespace EnemiesAI
             if (!EnemiesAiController.Enemies.Contains(this))
             {
                 EnemiesAiController.Enemies.Add(this);
+            }
+
+            if (TryGetComponent(out HpHandler hpHandler))
+            {
+                hpHandler.OnDead += OnDestroyHandler;
+            }
+        }
+        
+        private void OnDestroyHandler()
+        {
+            if (EnemiesAiController.Enemies.Contains(this))
+            {
+                EnemiesAiController.Enemies.Remove(this);
             }
         }
     }

@@ -13,6 +13,8 @@ public class FightTarget : MonoBehaviour
     public NavigationTarget NavigationTarget;
     private IHpHandler hpHandler;
 
+    public Action<Fighter, IWeapon> OnDead; //TODO: лучше перенести в HpHandler
+
     // TODO: Initializable
     private void Start()
     {
@@ -28,13 +30,17 @@ public class FightTarget : MonoBehaviour
         }
     }
 
-    public void Attack(IWeapon weapon)
+    public void Attack(Fighter source, IWeapon weapon)
     {
         float damage = weapon.Damage;
         if (_armor != null)
         {
             damage -= _armor.Protection;
         }
-        hpHandler.HandleDamage(damage);
+
+        if (hpHandler.HandleDamage(damage))
+        {
+            OnDead.Invoke(source, weapon);
+        }
     }
 }

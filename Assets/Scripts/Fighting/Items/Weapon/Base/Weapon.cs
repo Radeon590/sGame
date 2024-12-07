@@ -14,7 +14,7 @@ namespace Fighting.Items.Weapon.Base
         
         public virtual void UseEffect(Fighter fighter, FightTarget target)
         {
-            target.Attack(this);
+            target.Attack(fighter, this);
             OnEffect?.Invoke(fighter, target);
         }
 
