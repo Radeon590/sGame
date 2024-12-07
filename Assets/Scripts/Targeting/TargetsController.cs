@@ -19,17 +19,12 @@ public class TargetsController : MonoBehaviour
                 if (targetableUnit != null)
                 {
                     OnUnitsTargeted?.Invoke(targetableUnit);
-                    Debug.Log($"Target selected: {targetableUnit.gameObject.name}");
                 }
             }
             else
             {
                 OnPositionSelected?.Invoke(mousePosition);
-                Debug.Log($"Position selected: {mousePosition}");
             }
-
-
         }
-
     }
 }

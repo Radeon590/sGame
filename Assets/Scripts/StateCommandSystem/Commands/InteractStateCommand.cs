@@ -7,6 +7,11 @@ public class InteractStateCommand : NavigateStateCommand
 {
     private Interactable _interactable;
     private Action<Interactable> _onInteract;
+    
+    public InteractStateCommand(Interactable interactable) : base(interactable.GetComponent<NavigationTarget>())
+    {
+        _interactable = interactable;
+    }
 
     public InteractStateCommand(Interactable interactable, Action<Interactable> onInteract) : base(interactable.GetComponent<NavigationTarget>())
     {
@@ -17,7 +22,10 @@ public class InteractStateCommand : NavigateStateCommand
     public override void Invoke(StateCommandTarget stateCommandTarget)
     {
         var targetInteractor = GetRequiredStateCommandTargetComponent<Interactor>(stateCommandTarget);
-        targetInteractor.OnInteract += _onInteract;
+        if (_onInteract != null)
+        {
+            targetInteractor.OnInteract += _onInteract;
+        }
         targetInteractor.OnInteract += GetOnInteractAction(stateCommandTarget);
         targetInteractor.SetInteraction(_interactable);
         base.Invoke(stateCommandTarget);

@@ -65,9 +65,12 @@ public class SquadManager : MonoBehaviour
     
     public void InvokeCommand(StateCommand stateCommand)
     {
-        foreach (var squadUnit in SquadUnits)
+        if (SquadUnits != null)
         {
-            squadUnit.InvokeStateCommand(stateCommand);
+            foreach (var squadUnit in SquadUnits)
+            {
+                squadUnit.InvokeStateCommand(stateCommand);
+            }
         }
     }
 

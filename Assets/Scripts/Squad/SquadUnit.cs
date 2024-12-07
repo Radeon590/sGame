@@ -9,6 +9,9 @@ public class SquadUnit : StateCommandTarget
     
     private void OnDestroy()
     {
-        SquadManager.RemoveSquadUnit(this);
+        if (SquadManager != null)
+        {
+            SquadManager.RemoveSquadUnit(this);
+        }
     }
 }

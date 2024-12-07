@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 namespace EnemiesAI
 {
-    [RequireComponent(typeof(Fighter), typeof(Navigatable))]
+    [RequireComponent(typeof(Fighter), typeof(Navigatable), typeof(FightTarget))]
     public class EnemyUnit : StateCommandTarget, IInitializable
     {
         public float angerDistance;
@@ -13,6 +13,8 @@ namespace EnemiesAI
         public float allowedDistanceFromArea;
 
         public bool IsFighting = false;
+        
+        public FightTarget FightTarget => GetComponent<FightTarget>();
         
         public bool IsInitializationOnStartRequired => true;
         [SerializeField] protected UnityEvent onInitialized;
