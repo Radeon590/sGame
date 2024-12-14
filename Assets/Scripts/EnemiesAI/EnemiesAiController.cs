@@ -2,13 +2,22 @@
 using System.Collections.Generic;
 using StateCommandSystem.Commands;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace EnemiesAI
 {
-    public class EnemiesAiController : MonoBehaviour
+    public class EnemiesAiController : MonoBehaviour, IInitializable
     {
-        public static List<EnemyUnit> Enemies = new List<EnemyUnit>();
-        public static List<PlayerUnit> PlayerUnits = new List<PlayerUnit>();
+        public bool IsInitializationOnStartRequired => false;
+        public UnityEvent OnInitialized { get; }
+        public void Initialize()
+        {
+            Enemies = new List<EnemyUnit>();
+            PlayerUnits = new List<PlayerUnit>();
+        }
+        
+        public static List<EnemyUnit> Enemies;
+        public static List<PlayerUnit> PlayerUnits;
 
         private void FixedUpdate()
         {
