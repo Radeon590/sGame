@@ -28,14 +28,21 @@ public class InitializingManager : Initializable
 
     public override void Initialize()
     {
-        CollectInitializables();
-        InitializeInitializables();
+        // setup initializables from inspector (in this case InitializingManager is kinda gameMachine)
+        if (Initializables is { Count: > 0 })
+        {
+            InitializeInitializables(Initializables);
+        }
+        
+        // collect another initializables from scene and setup
+        var collectedInitializables = CollectInitializables();
+        InitializeInitializables(collectedInitializables);
         base.Initialize();
     }
     
-    private void CollectInitializables()
+    private List<IInitializable> CollectInitializables()
     {
-        Initializables = new List<IInitializable>(initializables);
+        var result = new List<IInitializable>(initializables);
         if (isSelfSetupRequired)
         {
             List<GameObject> rootGameObjects = SceneManager.GetActiveScene().GetRootGameObjects().ToList();
@@ -49,18 +56,20 @@ public class InitializingManager : Initializable
 
                 foreach (var childrenInitializable in childrenInitializables)
                 {
-                    if (!Initializables.Contains(childrenInitializable))
+                    if (!result.Contains(childrenInitializable))
                     {
-                        Initializables.Add(childrenInitializable);
+                        result.Add(childrenInitializable);
                     }
                 }
             }
         }
+
+        return result;
     }
 
-    private void InitializeInitializables()
+    private void InitializeInitializables(List<IInitializable> initializables)
     {
-        foreach (var initializable in Initializables)
+        foreach (var initializable in initializables)
         {
             if ((_isStartInitialization && initializable.IsInitializationOnStartRequired)
                 || (!_isStartInitialization && !initializable.IsInitializationOnStartRequired))
