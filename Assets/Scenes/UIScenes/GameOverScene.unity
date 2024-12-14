@@ -491,6 +491,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playScene: MainScene
   mainMenuScene: StartScene
+  buttonSound: {fileID: 8300000, guid: f3403dc9cc0534d44aa193c2b6eacbd1, type: 3}
 --- !u!4 &905492661
 Transform:
   m_ObjectHideFlags: 0

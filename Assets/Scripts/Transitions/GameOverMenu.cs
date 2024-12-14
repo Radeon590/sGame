@@ -4,33 +4,53 @@ using UnityEngine.SceneManagement;
 
 public class GameOverMenu : MonoBehaviour
 {
-    // Переменные для указания сцен через инспектор
-    [SerializeField] private string playScene;  // Сцена для новой игры
-    [SerializeField] private string mainMenuScene; // Сцена главного меню
+    [SerializeField] private string playScene;
+    [SerializeField] private string mainMenuScene;
+    [SerializeField] private AudioClip buttonSound;
 
-    // Функция для загрузки сцены с игрой
+    private bool isProcessing = false;
+
     public void RestartGame()
     {
-        if (!string.IsNullOrEmpty(playScene))
+        if (!isProcessing)
         {
-            SceneManager.LoadScene(playScene);
-        }
-        else
-        {
-            Debug.LogWarning("Сцена с игрой не указана!");
+            isProcessing = true;
+            float delay = PlayButtonSound();
+            StartCoroutine(LoadSceneAfterDelay(playScene, delay));
         }
     }
 
-    // Функция для загрузки сцены главного меню
     public void GoToMainMenu()
     {
-        if (!string.IsNullOrEmpty(mainMenuScene))
+        if (!isProcessing)
         {
-            SceneManager.LoadScene(mainMenuScene);
+            isProcessing = true;
+            float delay = PlayButtonSound();
+            StartCoroutine(LoadSceneAfterDelay(mainMenuScene, delay));
+        }
+    }
+
+    private float PlayButtonSound()
+    {
+        if (buttonSound != null)
+        {
+            AudioSource.PlayClipAtPoint(buttonSound, Camera.main.transform.position);
+            return buttonSound.length;
+        }
+        return 0f;
+    }
+
+    private IEnumerator LoadSceneAfterDelay(string sceneName, float delay)
+    {
+        if (!string.IsNullOrEmpty(sceneName))
+        {
+            yield return new WaitForSeconds(delay);
+            SceneManager.LoadScene(sceneName);
         }
         else
         {
-            Debug.LogWarning("Сцена главного меню не указана!");
+            Debug.LogWarning("Сцена не указана!");
+            isProcessing = false;
         }
     }
 }
