@@ -11,11 +11,25 @@ namespace Inventory
         public Weapon Weapon;
         public Armor Armor;
 
+        [SerializeField] private AudioClip weaponPickupSound;
+        [SerializeField] private AudioClip armorPickupSound;
+        private AudioSource audioSource;
+
         private Fighter _fighter;
         private FightTarget _fightTarget;
-        
+
         public bool IsInitializationOnStartRequired => true;
         public UnityEvent OnInitialized { get; }
+
+        private void Start()
+        {
+            audioSource = GetComponent<AudioSource>();
+            if (audioSource == null)
+            {
+                audioSource = gameObject.AddComponent<AudioSource>();
+            }
+        }
+
         public void Initialize()
         {
             _fightTarget = GetComponent<FightTarget>();
@@ -23,7 +37,7 @@ namespace Inventory
             _fighter = GetComponent<Fighter>();
             _fighter.Weapon = Weapon;
         }
-        
+
         public void AddItem(InventoryItem inventoryItem)
         {
             if (inventoryItem is Weapon weapon)
@@ -34,6 +48,7 @@ namespace Inventory
                 }
                 Weapon = weapon;
                 _fighter.Weapon = weapon;
+                PlayPickupSound(weaponPickupSound); // Воспроизводим звук для оружия
                 return;
             }
 
@@ -45,6 +60,7 @@ namespace Inventory
                 }
                 Armor = armor;
                 _fightTarget.Armor = armor;
+                PlayPickupSound(armorPickupSound); // Воспроизводим звук для брони
                 return;
             }
         }
@@ -52,6 +68,14 @@ namespace Inventory
         public void DropItem(InventoryItem inventoryItem)
         {
             ItemsFabric.instance.DropItem(this, inventoryItem);
+        }
+
+        private void PlayPickupSound(AudioClip sound)
+        {
+            if (sound != null && audioSource != null)
+            {
+                audioSource.PlayOneShot(sound); // Воспроизводим указанный звук
+            }
         }
     }
 }
