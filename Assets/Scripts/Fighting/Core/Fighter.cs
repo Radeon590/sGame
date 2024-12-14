@@ -17,6 +17,15 @@ public class Fighter : MonoBehaviour
 
     private bool _isCooldownPassed = true;
 
+    // Звук атаки
+    [SerializeField] private AudioClip attackSound;
+    private AudioSource audioSource;
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     public void SetTarget(FightTarget target)
     {
         Target = target;
@@ -43,7 +52,16 @@ public class Fighter : MonoBehaviour
     private void Attack()
     {
         Weapon.UseEffect(this, Target);
+        PlayAttackSound();
         StartCooldown();
+    }
+
+    private void PlayAttackSound()
+    {
+        if (attackSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(attackSound);
+        }
     }
 
     private void StartCooldown()
