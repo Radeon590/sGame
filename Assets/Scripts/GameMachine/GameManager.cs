@@ -27,7 +27,6 @@ public class GameManager : MonoBehaviour
         if (gameOverTriggered) return;
         characters.RemoveAll(character => character == null);
 
-
         foreach (var character in characters)
         {
             if (character != null && !character.IsDead)
@@ -35,6 +34,7 @@ public class GameManager : MonoBehaviour
                 return;
             }
         }
+        
         gameOverTriggered = true;
         LoadGameOverScene();
     }
