@@ -15,8 +15,8 @@ namespace Fighting.Hp
             hp -= damage;
             if (hp <= 0)
             {
-                Destroy(gameObject);
                 OnDead?.Invoke();
+                Destroy(gameObject);
                 return true;
             }
 
