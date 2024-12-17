@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
-  attackSound: {fileID: 0}
+  attackSound: {fileID: 8300000, guid: c9ad84ebf260364499976da2c56bd556, type: 3}
 --- !u!114 &3271468567804082145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,7 +249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  deathSound: {fileID: 0}
+  deathSound: {fileID: 8300000, guid: 7bf34ac15ad3b5d4abef66596c8a34ae, type: 3}
 --- !u!114 &2922189440111505858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,8 +293,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Weapon: {fileID: 0}
   Armor: {fileID: 0}
-  weaponPickupSound: {fileID: 0}
-  armorPickupSound: {fileID: 0}
+  weaponPickupSound: {fileID: 8300000, guid: 807e9afe48952d143a6946638ae0e4e4, type: 3}
+  armorPickupSound: {fileID: 8300000, guid: 76001bc5a50188645b1da2317d125659, type: 3}
 --- !u!61 &3598846020965920142
 BoxCollider2D:
   m_ObjectHideFlags: 0
