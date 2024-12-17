@@ -1,15 +1,20 @@
-﻿using Fighting.Hp;
+﻿using System;
 using Fighting.Items.Armor;
 using Fighting.Items.Weapon.Base;
+using Inventory.UI;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
-namespace Inventory
+namespace Inventory.Gameplay
 {
     public class UnitInventory : MonoBehaviour, IInitializable
     {
+        [NonSerialized] public InventoryUiUnit InventoryUnit;
+        
         public Weapon Weapon;
         public Armor Armor;
+        public Action<Item> OnAddItem;
 
         [SerializeField] private AudioClip weaponPickupSound;
         [SerializeField] private AudioClip armorPickupSound;
@@ -38,9 +43,9 @@ namespace Inventory
             _fighter.Weapon = Weapon;
         }
 
-        public void AddItem(InventoryItem inventoryItem)
+        public void AddItem(Item item)
         {
-            if (inventoryItem is Weapon weapon)
+            if (item is Weapon weapon)
             {
                 if (Weapon != null)
                 {
@@ -49,10 +54,9 @@ namespace Inventory
                 Weapon = weapon;
                 _fighter.Weapon = weapon;
                 PlayPickupSound(weaponPickupSound); // Воспроизводим звук для оружия
-                return;
             }
 
-            if (inventoryItem is Armor armor)
+            if (item is Armor armor)
             {
                 if (Armor != null)
                 {
@@ -61,13 +65,14 @@ namespace Inventory
                 Armor = armor;
                 _fightTarget.Armor = armor;
                 PlayPickupSound(armorPickupSound); // Воспроизводим звук для брони
-                return;
             }
+            
+            OnAddItem?.Invoke(item);
         }
 
-        public void DropItem(InventoryItem inventoryItem)
+        public void DropItem(Item item)
         {
-            ItemsFabric.instance.DropItem(this, inventoryItem);
+            ItemsFabric.instance.DropItem(this, item);
         }
 
         private void PlayPickupSound(AudioClip sound)
@@ -75,6 +80,14 @@ namespace Inventory
             if (sound != null && audioSource != null)
             {
                 audioSource.PlayOneShot(sound); // Воспроизводим указанный звук
+            }
+        }
+
+        private void OnDestroy()
+        {
+            if (InventoryUnit != null)
+            {
+                Destroy(InventoryUnit.gameObject);
             }
         }
     }

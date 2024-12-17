@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
 
-namespace Inventory
+namespace Inventory.Gameplay
 {
     public class ItemsFabric : MonoBehaviour, IInitializable
     {
@@ -10,11 +9,11 @@ namespace Inventory
         
         [SerializeField] private Transform itemsParent;
 
-        public void DropItem(UnitInventory unitInventory, InventoryItem item)
+        public void DropItem(UnitInventory unitInventory, Item item)
         {
             InventoryIteractableItem itemObject = Instantiate(item.InteractableItemPrefab, itemsParent).GetComponent<InventoryIteractableItem>();
             itemObject.transform.position = unitInventory.transform.position;
-            itemObject.InventoryItem = item;
+            itemObject.item = item;
         }
 
         public bool IsInitializationOnStartRequired => true;

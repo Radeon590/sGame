@@ -2,14 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using EnemiesAI;
+using Inventory;
+using Inventory.Gameplay;
+using Inventory.UI;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace PlayerController
 {
     public class PlayerController : MonoBehaviour, IInitializable
     {
         [SerializeField] private SquadManager squadManager;
+        [SerializeField] private InventoryUi inventoryUi;
         
         public bool IsInitializationOnStartRequired => true;
         [SerializeField] private UnityEvent onInitialized;
@@ -32,10 +37,8 @@ namespace PlayerController
                 }
             }
 
-            if (squadUnits.Count > 0)
-            {
-                squadManager.SetSquadUnits(squadUnits);
-            }
+            squadManager.SetSquadUnits(squadUnits);
+            inventoryUi.SetInventoryUnits(squadUnits.Select(u => u.GetComponent<UnitInventory>()).ToList());
         }
         
         private void OnPositionSelected(Vector2 position)

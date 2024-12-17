@@ -1,18 +1,17 @@
-﻿using UnityEngine;
-using UnityEngine.Serialization;
+﻿using UnityEngine.Serialization;
 
-namespace Inventory
+namespace Inventory.Gameplay
 {
     public class InventoryIteractableItem : Interactable
     {
-        public InventoryItem InventoryItem;
+        [FormerlySerializedAs("InventoryItem")] public Item item;
 
         public override void Interact(Interactor interactor)
         {
             base.Interact(interactor);
             if (interactor.TryGetComponent(out UnitInventory inventory))
             {
-                inventory.AddItem(InventoryItem);
+                inventory.AddItem(item);
             }
             Destroy(gameObject);
         }

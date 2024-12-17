@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Inventory
+namespace Inventory.Gameplay
 {
-    public abstract class InventoryItem : ScriptableObject, IUIInventoryHands
+    public abstract class Item : ScriptableObject, IInventoryUiItem
     {
         public GameObject InteractableItemPrefab;
         [SerializeField] private Sprite icon;
