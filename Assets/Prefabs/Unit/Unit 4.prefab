@@ -291,7 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03d57d4dfff94f1ba8d1a871b25e485a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Weapon: {fileID: 0}
+  Weapon: {fileID: 11400000, guid: 67830b452d4b44b4f840574cc6166a42, type: 2}
   Armor: {fileID: 0}
   weaponPickupSound: {fileID: 8300000, guid: 807e9afe48952d143a6946638ae0e4e4, type: 3}
   armorPickupSound: {fileID: 8300000, guid: 76001bc5a50188645b1da2317d125659, type: 3}

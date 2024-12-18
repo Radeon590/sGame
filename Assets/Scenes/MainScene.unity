@@ -3699,6 +3699,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 1595255454}
     m_Modifications:
     - target: {fileID: 159425186897507505, guid: 1c946e031e1330f4a8a3f3d1b2604ff0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 159425186897507505, guid: 1c946e031e1330f4a8a3f3d1b2604ff0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 159425186897507505, guid: 1c946e031e1330f4a8a3f3d1b2604ff0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.314701
       objectReference: {fileID: 0}
@@ -3741,6 +3749,22 @@ PrefabInstance:
     - target: {fileID: 1637999536301223134, guid: 1c946e031e1330f4a8a3f3d1b2604ff0, type: 3}
       propertyPath: m_Name
       value: RangeWeaponItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263292039414595392, guid: 1c946e031e1330f4a8a3f3d1b2604ff0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 212a6ef4e8851d64c9a7a48afff59a35, type: 3}
+    - target: {fileID: 6263292039414595392, guid: 1c946e031e1330f4a8a3f3d1b2604ff0, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263292039414595392, guid: 1c946e031e1330f4a8a3f3d1b2604ff0, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263292039414595392, guid: 1c946e031e1330f4a8a3f3d1b2604ff0, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
