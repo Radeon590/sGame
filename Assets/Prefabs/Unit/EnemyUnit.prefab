@@ -279,7 +279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03d57d4dfff94f1ba8d1a871b25e485a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Weapon: {fileID: 11400000, guid: a1ffd80737619194f9adf141c8f0825e, type: 2}
+  Weapon: {fileID: 11400000, guid: 0db6d3d9ae8bf8a45ab8882f26d5d70a, type: 2}
   Armor: {fileID: 0}
   weaponPickupSound: {fileID: 0}
   armorPickupSound: {fileID: 0}
