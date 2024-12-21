@@ -249,8 +249,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   angerDistance: 5
-  area: {fileID: 0}
-  allowedDistanceFromArea: 10
+  area: {fileID: 3332526957116709379}
+  allowedDistanceFromArea: 100
   IsFighting: 0
   onInitialized:
     m_PersistentCalls:
