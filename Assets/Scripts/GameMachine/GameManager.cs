@@ -36,17 +36,10 @@ public class GameManager : MonoBehaviour
     private void OnEnemyDead()
     {
         if (gameOverTriggered) return;
-
-        // Убираем мертвых врагов из списка
         enemies.RemoveAll(enemy => enemy == null || enemy.IsDead);
-
-        Debug.Log($"Enemies remaining: {enemies.Count}");
-
-        // Если все враги мертвы, запускаем сцену победы
         if (enemies.Count == 0)
         {
             gameOverTriggered = true;
-            Debug.Log("All enemies are dead. Loading victory scene...");
             LoadVictoryScene();
         }
     }
@@ -54,30 +47,23 @@ public class GameManager : MonoBehaviour
     private void OnAllyDead()
     {
         if (gameOverTriggered) return;
-
-        // Убираем мертвых союзников из списка
         allies.RemoveAll(ally => ally == null || ally.IsDead);
 
-        Debug.Log($"Allies remaining: {allies.Count}");
 
-        // Если все союзники мертвы, запускаем сцену поражения
         if (allies.Count == 0)
         {
             gameOverTriggered = true;
-            Debug.Log("All allies are dead. Loading game over scene...");
             LoadGameOverScene();
         }
     }
 
     private void LoadGameOverScene()
     {
-        Debug.Log("Game Over Scene Loading...");
         SceneManager.LoadScene(gameOverSceneName);
     }
 
     private void LoadVictoryScene()
     {
-        Debug.Log("Victory Scene Loading...");
         SceneManager.LoadScene(victorySceneName);
     }
 }

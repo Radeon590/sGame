@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20f8140d8f244f7f9bfd683342847c19, type: 3}
-  m_Name: RangeWeapon
+  m_Name: RangeWeapon 1
   m_EditorClassIdentifier: 
-  InteractableItemPrefab: {fileID: 1637999536301223134, guid: 1c946e031e1330f4a8a3f3d1b2604ff0, type: 3}
-  icon: {fileID: 21300000, guid: c5838fdf0aefa354da87981e15850379, type: 3}
+  InteractableItemPrefab: {fileID: 1637999536301223134, guid: b76430c69faa05248a02abb50357ec0b, type: 3}
+  icon: {fileID: 21300000, guid: afb5201ac2fb019489cffbcdda437aa2, type: 3}
   damage: 5
   rate: 3
   range: 15
-  bulletPrefab: {fileID: 7473749400365425509, guid: 1d4a3e0fdc4451848b492e2c0c5bf74b, type: 3}
+  bulletPrefab: {fileID: 7473749400365425509, guid: ee7a74d28784084428cb31e63bfcc3a6, type: 3}

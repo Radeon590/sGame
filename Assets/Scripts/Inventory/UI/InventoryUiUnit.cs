@@ -48,17 +48,21 @@ namespace Inventory.UI
 
         public void OnUnitAddItem(Item item)
         {
-            if (item is Weapon)
+            if (item is Weapon weapon)
             {
-                SetIcon(weaponImage, item.Icon);
+                SetIcon(weaponImage, weapon.Icon);
+                _unitInventory.Weapon = weapon;
                 return;
             }
 
             if (item is Armor armor)
             {
-                SetIcon(armorImage, item.Icon);
+
+                SetIcon(armorImage, armor.Icon);
+                _unitInventory.Armor = armor;
                 return;
             }
+
         }
 
         private void SetIcon(Image image, Sprite icon)
