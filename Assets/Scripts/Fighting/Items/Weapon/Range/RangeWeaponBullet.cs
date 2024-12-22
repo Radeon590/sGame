@@ -32,6 +32,9 @@ namespace Fighting.Items.Weapon.Range
         {
             if (_target == null) return;
 
+            Vector2 direction = (_target.transform.position - transform.position).normalized;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
             transform.position = Vector2.MoveTowards(transform.position, _target.transform.position, speed * Time.deltaTime);
         }
 
