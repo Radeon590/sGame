@@ -17,4 +17,4 @@ MonoBehaviour:
   damage: 5
   rate: 3
   range: 15
-  bulletPrefab: {fileID: 7473749400365425509, guid: 1d4a3e0fdc4451848b492e2c0c5bf74b, type: 3}
+  bulletPrefab: {fileID: 7473749400365425509, guid: e5082b6ec53696c4aaf734d6d70fa40d, type: 3}
