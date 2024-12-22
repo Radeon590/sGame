@@ -1,12 +1,10 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class StateCommand
 {
     public Action<StateCommand, StateCommandTarget> OnDone;
-    
+
     public virtual void Invoke(StateCommandTarget stateCommandTarget)
     {
     }
@@ -23,13 +21,32 @@ public abstract class StateCommand
 
     protected T GetRequiredStateCommandTargetComponent<T>(StateCommandTarget stateCommandTarget)
     {
-        if (stateCommandTarget.TryGetComponent(out T navigatable))
+        try
         {
-            return navigatable;
+            if (stateCommandTarget == null)
+            {
+                throw new ArgumentNullException(nameof(stateCommandTarget), "StateCommandTarget is null.");
+            }
+
+            if (stateCommandTarget.TryGetComponent(out T navigatable))
+            {
+                return navigatable;
+            }
+            else
+            {
+                throw new Exception($"Cannot get {typeof(T).Name} from CommandTarget object when invoking {GetType().Name}.");
+            }
         }
-        else
+        catch (ArgumentNullException ex)
         {
-            throw new Exception($"cant get {typeof(T)} from CommandTarget object when invoke {GetType()}");
+            Debug.LogWarning($"ArgumentNullException in GetRequiredStateCommandTargetComponent: {ex.Message}");
+            throw;
+        }
+        catch (Exception ex)
+        {
+            Debug.LogWarning($"Exception in GetRequiredStateCommandTargetComponent: {ex.Message}");
+            throw;
         }
     }
+
 }

@@ -172,7 +172,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &4057874472599072270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
-  attackSound: {fileID: 0}
+  attackSound: {fileID: 8300000, guid: c9ad84ebf260364499976da2c56bd556, type: 3}
 --- !u!114 &3271468567804082145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,8 +248,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5ef6e8c743f0fc4f8b4078a82f5bdc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 1
-  deathSound: {fileID: 0}
+  hp: 30
+  deathSound: {fileID: 8300000, guid: 7bf34ac15ad3b5d4abef66596c8a34ae, type: 3}
 --- !u!114 &2922189440111505858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,10 +291,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03d57d4dfff94f1ba8d1a871b25e485a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Weapon: {fileID: 0}
+  Weapon: {fileID: 11400000, guid: a1ffd80737619194f9adf141c8f0825e, type: 2}
   Armor: {fileID: 0}
-  weaponPickupSound: {fileID: 0}
-  armorPickupSound: {fileID: 0}
+  weaponPickupSound: {fileID: 8300000, guid: 807e9afe48952d143a6946638ae0e4e4, type: 3}
+  armorPickupSound: {fileID: 8300000, guid: 76001bc5a50188645b1da2317d125659, type: 3}
 --- !u!61 &3598846020965920142
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -402,6 +402,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7784338515585211231, guid: 2a5cd5cda6a99d04fac5e64b6ee6d5f8, type: 3}
       propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7784338515585211231, guid: 2a5cd5cda6a99d04fac5e64b6ee6d5f8, type: 3}
+      propertyPath: m_SpriteSortPoint
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

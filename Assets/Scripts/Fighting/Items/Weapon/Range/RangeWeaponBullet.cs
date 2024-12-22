@@ -14,56 +14,75 @@ namespace Fighting.Items.Weapon.Range
         public Fighter Fighter => _fighter;
         private FightTarget _target;
         public FightTarget Target => _target;
-        
+
         public void SetTarget(Fighter fighter, FightTarget target)
         {
             _fighter = fighter;
             _target = target;
-            _target.OnDead += OnTargetDead;
+
+            if (_target != null && _target.gameObject != null)
+            {
+                _target.OnDead += OnTargetDead;
+            }
+
             StartCoroutine(LifeTimeTimer());
         }
 
         private void Update()
         {
-            if (Target == null)
-            {
-                return;
-            }
+            if (_target == null) return;
 
-            transform.position = Vector2.MoveTowards(transform.position, Target.transform.position, speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, _target.transform.position, speed * Time.deltaTime);
         }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.gameObject.TryGetComponent<FightTarget>(out FightTarget target))
+            if (other.gameObject.TryGetComponent<FightTarget>(out FightTarget target) && target == _target)
             {
-                if (target == Target)
-                {
-                    OnHit?.Invoke(this);
-                }
+                OnHit?.Invoke(this);
             }
         }
 
         private IEnumerator LifeTimeTimer()
         {
             yield return new WaitForSeconds(lifetime);
-            Destroy(gameObject);
+            DestroyBullet();
         }
 
         private void OnTargetDead(Fighter fighter, IWeapon weapon)
         {
+            DestroyBullet();
+        }
+
+        private void DestroyBullet()
+        {
+            if (_target != null && _target.gameObject != null)
+            {
+                try
+                {
+                    _target.OnDead -= OnTargetDead;
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogWarning($"Failed to unsubscribe OnDead for {_target}: {ex.Message}");
+                }
+            }
+
             Destroy(gameObject);
         }
 
         private void OnDestroy()
         {
-            try
+            if (_target != null && _target.gameObject != null)
             {
-                _target.OnDead -= OnTargetDead;
-            }
-            catch (InvalidOperationException)
-            {
-                // значит, таргет уже мёртв
+                try
+                {
+                    _target.OnDead -= OnTargetDead;
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogWarning($"OnDestroy: Failed to unsubscribe from OnDead. Exception: {ex.Message}");
+                }
             }
         }
     }
