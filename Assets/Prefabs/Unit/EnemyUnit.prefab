@@ -234,7 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5ef6e8c743f0fc4f8b4078a82f5bdc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 1
+  hp: 50
   deathSound: {fileID: 8300000, guid: 18bcbfc918756284a8be30337a487586, type: 3}
 --- !u!114 &6783754728790575899
 MonoBehaviour:
@@ -250,7 +250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   angerDistance: 5
   area: {fileID: 3332526957116709379}
-  allowedDistanceFromArea: 100
+  allowedDistanceFromArea: 10
   IsFighting: 0
   onInitialized:
     m_PersistentCalls:
