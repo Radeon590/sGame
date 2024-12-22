@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e08af6b6ffdb41b08534b17e48f930f0, type: 3}
-  m_Name: Armor
+  m_Name: Crown
   m_EditorClassIdentifier: 
-  InteractableItemPrefab: {fileID: 1297852281009940341, guid: d62ed68a9da705d439e41e17ccc023a6, type: 3}
-  icon: {fileID: 21300000, guid: fa5f1b1cf1527504499f7e2ceec61f0a, type: 3}
+  InteractableItemPrefab: {fileID: 1297852281009940341, guid: c583dc2fa720f984fa9d11773a320e87, type: 3}
+  icon: {fileID: 21300000, guid: 2be9b10ec1e68374282559871aeb47f7, type: 3}
   protection: 100

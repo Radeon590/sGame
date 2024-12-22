@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7349820041623495284, guid: e60bb44ba725d70449a8dda9750a64ef, type: 3}
       propertyPath: m_Name
-      value: RangeWeaponItem Variant 3
+      value: Crook
       objectReference: {fileID: 0}
     - target: {fileID: 8174875385271974427, guid: e60bb44ba725d70449a8dda9750a64ef, type: 3}
       propertyPath: m_LocalScale.x
@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ec273f48ae64f8aaa09412054dd6e71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: a1ffd80737619194f9adf141c8f0825e, type: 2}
+  item: {fileID: 11400000, guid: 27434e522fea3ba4e9a37d47fa8bbe95, type: 2}
 --- !u!61 &-254595968520453803
 BoxCollider2D:
   m_ObjectHideFlags: 0

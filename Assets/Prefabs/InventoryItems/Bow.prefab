@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 2715450027436175850, guid: e60bb44ba725d70449a8dda9750a64ef, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 796b7bf5f50da804d98bcaa39d7f22b4, type: 3}
+      objectReference: {fileID: 21300000, guid: 212a6ef4e8851d64c9a7a48afff59a35, type: 3}
     - target: {fileID: 2715450027436175850, guid: e60bb44ba725d70449a8dda9750a64ef, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7349820041623495284, guid: e60bb44ba725d70449a8dda9750a64ef, type: 3}
       propertyPath: m_Name
-      value: RangeWeaponItem Variant 2
+      value: Bow
       objectReference: {fileID: 0}
     - target: {fileID: 8174875385271974427, guid: e60bb44ba725d70449a8dda9750a64ef, type: 3}
       propertyPath: m_LocalScale.x
@@ -87,7 +87,7 @@ PrefabInstance:
       addedObject: {fileID: 5246459469548423884}
     - targetCorrespondingSourceObject: {fileID: 7349820041623495284, guid: e60bb44ba725d70449a8dda9750a64ef, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -254595968520453803}
+      addedObject: {fileID: 7255833385278659893}
   m_SourcePrefab: {fileID: 100100000, guid: e60bb44ba725d70449a8dda9750a64ef, type: 3}
 --- !u!1 &1637999536301223134 stripped
 GameObject:
@@ -106,8 +106,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ec273f48ae64f8aaa09412054dd6e71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: a1ffd80737619194f9adf141c8f0825e, type: 2}
---- !u!61 &-254595968520453803
+  item: {fileID: 11400000, guid: 22cbe885674da704bbe595af2bd5ea0c, type: 2}
+--- !u!61 &7255833385278659893
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

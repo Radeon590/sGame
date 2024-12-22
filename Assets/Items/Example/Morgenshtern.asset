@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66ac44e55a974fd19695151e5f2b61fd, type: 3}
-  m_Name: MeleeWeapon
+  m_Name: Morgenshtern
   m_EditorClassIdentifier: 
-  InteractableItemPrefab: {fileID: 4946518737148687580, guid: fb85b9981bbd0bf4db181592ecd7cc82, type: 3}
-  icon: {fileID: 21300000, guid: 6db93c21528a93f4689a1cdcb7e81360, type: 3}
+  InteractableItemPrefab: {fileID: 4946518737148687580, guid: a22e827dbd3a2e64ca9f8bbe33c1125d, type: 3}
+  icon: {fileID: 21300000, guid: 126d1c8fcd83484408ef2fe1e792f340, type: 3}
   damage: 5
   rate: 3
   range: 3

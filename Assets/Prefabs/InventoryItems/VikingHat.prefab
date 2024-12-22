@@ -50,16 +50,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1637999536301223134, guid: 1c946e031e1330f4a8a3f3d1b2604ff0, type: 3}
       propertyPath: m_Name
-      value: ArmorItem Variant 1
+      value: VikingHat
       objectReference: {fileID: 0}
     - target: {fileID: 5246459469548423884, guid: 1c946e031e1330f4a8a3f3d1b2604ff0, type: 3}
       propertyPath: item
       value: 
-      objectReference: {fileID: 11400000, guid: 33cbf82b2c487cc48a4efb441b586fe6, type: 2}
+      objectReference: {fileID: 11400000, guid: 652a918ead584d34cadf9f0a4d192d20, type: 2}
     - target: {fileID: 6263292039414595392, guid: 1c946e031e1330f4a8a3f3d1b2604ff0, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: d9ce6a554cd95a544aebc86e5801e12a, type: 3}
+      objectReference: {fileID: 21300000, guid: f9ac309717f38c8418c3ef6397773a8c, type: 3}
     - target: {fileID: 6263292039414595392, guid: 1c946e031e1330f4a8a3f3d1b2604ff0, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -71,6 +71,10 @@ PrefabInstance:
     - target: {fileID: 6263292039414595392, guid: 1c946e031e1330f4a8a3f3d1b2604ff0, type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7255833385278659893, guid: 1c946e031e1330f4a8a3f3d1b2604ff0, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2.56
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
