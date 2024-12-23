@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteractableItemPrefab: {fileID: 1637999536301223134, guid: 0fbea9354eb9cbf4494b318fa00c81e7, type: 3}
   icon: {fileID: 21300000, guid: c5838fdf0aefa354da87981e15850379, type: 3}
-  damage: 5
-  rate: 3
-  range: 15
+  damage: 15
+  rate: 7
+  range: 17
   bulletPrefab: {fileID: 7473749400365425509, guid: e5082b6ec53696c4aaf734d6d70fa40d, type: 3}

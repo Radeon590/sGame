@@ -15,5 +15,5 @@ MonoBehaviour:
   InteractableItemPrefab: {fileID: 4946518737148687580, guid: fb85b9981bbd0bf4db181592ecd7cc82, type: 3}
   icon: {fileID: 21300000, guid: 6db93c21528a93f4689a1cdcb7e81360, type: 3}
   damage: 5
-  rate: 3
-  range: 3
+  rate: 7
+  range: 7
