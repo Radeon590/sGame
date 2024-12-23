@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteractableItemPrefab: {fileID: 1297852281009940341, guid: cdef9874fcdf43e4288fae276bc4545b, type: 3}
   icon: {fileID: 21300000, guid: d9ce6a554cd95a544aebc86e5801e12a, type: 3}
-  protection: 100
+  protection: 50
