@@ -532,7 +532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fb50bb495fe9174695fb2730e9d0c77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: MainScene
+  sceneToLoad: MainScene_2
   buttonSound: {fileID: 8300000, guid: f3403dc9cc0534d44aa193c2b6eacbd1, type: 3}
   musicObject: {fileID: 92373245}
 --- !u!4 &679226067
