@@ -9,15 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/Scenes/UIScenes/StartScene.unity
+    path: Assets/Scenes/GameScenes/UIScenes/StartScene.unity
     guid: f435d6e140b4f784fbfa7aca40b12edc
   - enabled: 1
-    path: Assets/Scenes/MainScene.unity
+    path: Assets/Scenes/GameScenes/MainScene_2.unity
     guid: cfdcf91ca19477642a4792096c8c4921
   - enabled: 1
-    path: Assets/Scenes/UIScenes/GameOverScene.unity
+    path: Assets/Scenes/GameScenes/UIScenes/GameOverScene.unity
     guid: 72d4b1cb8d547584a964d00ce9243ff1
   - enabled: 1
-    path: Assets/Scenes/UIScenes/VictoryScene.unity
+    path: Assets/Scenes/GameScenes/UIScenes/VictoryScene.unity
     guid: 409ba02afb99c004495dc39a723d849e
   m_configObjects: {}
