@@ -4,7 +4,8 @@ using UnityEngine.SceneManagement;
 public class StartMenu : MonoBehaviour
 {
     [SerializeField] private string sceneToLoad;
-    [SerializeField] private AudioClip buttonSound; 
+    [SerializeField] private AudioClip buttonSound;
+    [SerializeField] private GameObject musicObject; // Ссылка на объект с музыкой
 
     private bool isExiting = false;
 
@@ -14,7 +15,7 @@ public class StartMenu : MonoBehaviour
 
         if (!string.IsNullOrEmpty(sceneToLoad))
         {
-            StartCoroutine(LoadSceneAfterDelay(sceneToLoad, delay)); 
+            StartCoroutine(LoadSceneAfterDelay(sceneToLoad, delay));
         }
         else
         {
@@ -45,6 +46,13 @@ public class StartMenu : MonoBehaviour
     private System.Collections.IEnumerator LoadSceneAfterDelay(string sceneName, float delay)
     {
         yield return new WaitForSeconds(delay);
+
+        // Удаляем объект с музыкой перед загрузкой новой сцены
+        if (musicObject != null)
+        {
+            Destroy(musicObject);
+        }
+
         SceneManager.LoadScene(sceneName);
     }
 

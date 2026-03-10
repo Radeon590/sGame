@@ -534,6 +534,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneToLoad: MainScene
   buttonSound: {fileID: 8300000, guid: f3403dc9cc0534d44aa193c2b6eacbd1, type: 3}
+  musicObject: {fileID: 92373245}
 --- !u!4 &679226067
 Transform:
   m_ObjectHideFlags: 0
